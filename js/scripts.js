@@ -33,8 +33,6 @@ const peoples = [
     }
 ];
 
-// почему не работает проверка на пустой массив и не добавляет ничего?
-
 function operation(result) {
     for (let i = 0; i < peoples.length; i++) {
         const peoplesElements = peoples[i];
@@ -46,21 +44,11 @@ function operation(result) {
         } else {
             peoplesElements.money = Math.round(peoplesElements.money);
         }
-        for (let j = 0; j < peoples[i].children.length; j++) {
-            // if (Array.isArray(peoples[i].children) && !peoples[i].children.length) {
-            //     // peoples[i].children.push({name: 'Stepan', age: Math.round(Math.random() * 18)})
-            //     // peoples[i].children = {name: 'Stepan', age: Math.round(Math.random() * 18)}
-            //     // peoples[i].children.name = 'Stepan'
-            // } Не видит пустой массив и не добавляет ни одним из способов которые я прописала
-
-            // const childrenElements = peoples[i].children[j];
-            // childrenElements.name = childrenElements.name.toUpperCase(); Почему не работает так?
-            // peoples[i].children[j].name = peoples[i].children[j].name.toUpperCase(); И так?
-
-            peoples[i].children[j] = peoples[i].children[j].name.toUpperCase(); // А работает так?
+        if (Array.isArray(peoplesElements.children) && !peoplesElements.children.length){
+            peoplesElements.children.push({name: 'Stepan', age: Math.round(Math.random() * 18)})
         }
     }
     return result
 }
 
-console.log(operation(peoples))
+console.dir(operation(peoples),{depth: null})
